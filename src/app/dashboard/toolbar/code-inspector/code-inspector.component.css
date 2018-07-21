@@ -1,0 +1,94 @@
+/*---------- 4K Auflösung ----------*/
+pre {
+  height: 95%;
+  width: 99%;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  font-size: 35px;
+  padding-left: 1%;
+}
+
+h2 {
+  font-size: 40px;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+/deep/ .mat-checkbox-inner-container {
+  width: 40px !important;
+  height: 34px !important;
+  margin-right: 20px !important;
+  padding-top: 1%;
+}
+
+/deep/ .mat-checkbox-layout .mat-checkbox-label {
+  line-height: 35px;
+}
+
+/*------------------------------------- für auflösungen bis 2400px --------------------------------------------------*/
+@media screen and (max-width: 2400px) {
+  pre {
+    height: 91%;
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  /deep/ .mat-checkbox-inner-container {
+    width: 20px !important;
+    height: 18px !important;
+    margin-right: 10px !important;
+    padding-top: 2px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1600px --------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+  pre {
+    height: 89%;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 13px;
+    padding-left: 5px;
+    padding-top: 2px;
+  }
+
+  /deep/ .mat-checkbox-inner-container {
+    width: 16px !important;
+    height: 14px !important;
+    margin-right: 10px !important;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1200px --------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+  pre {
+    height: 88%;
+    font-size: 11px;
+  }
+
+  h2 {
+    font-size: 12px;
+  }
+
+  /deep/ .mat-checkbox-inner-container {
+    width: 16px !important;
+    height: 14px !important;
+    margin-right: 10px !important;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 900px --------------------------------------------------*/
+@media screen and (max-width: 900px) {
+
+  /deep/ .mat-checkbox-inner-container {
+    width: 14px !important;
+    height: 12px !important;
+    margin-right: 8px !important;
+  }
+
+}

@@ -1,0 +1,52 @@
+/* @author Sabrina Adam <sabrina.adam@iem.thm.de>*/
+
+/*noinspection ALL*/
+.dropzoneBoxHD {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+/*noinspection CssUnusedSymbol*/
+.dropzoneBoxHD:hover {
+  background-color: rgba(103, 255, 45, 0.28);
+}
+
+/*noinspection CssUnusedSymbol*/
+.dropzoneBoxUHD {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+/*noinspection ALL*/
+.dropzoneBoxUHD:hover {
+  background-color: rgba(103, 255, 45, 0.28);
+}
+
+/*noinspection CssUnusedSymbol*/
+.dropzoneDashboardUHD {
+  top: 58px !important;
+  left: 58px !important;
+  position: absolute;
+}
+
+/*noinspection CssUnusedSymbol*/
+.dropzoneDashboardHD {
+  top: 19px !important;
+  left: 19px !important;
+  position: absolute;
+}
+
+/*noinspection CssUnusedSymbol*/
+.dropzoneDashboardQHD {
+  top: 19px !important;
+  left: 19px !important;
+  position: absolute;
+}
+
+#dropzoneDashboard{
+  overflow:scroll;
+}
+
+

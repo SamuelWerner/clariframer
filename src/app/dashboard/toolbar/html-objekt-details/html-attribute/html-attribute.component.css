@@ -1,0 +1,260 @@
+.groesseMenue {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.menueAbstand {
+  margin-bottom: 15px;
+  padding-top: 15px;
+}
+
+input {
+  height: 35px;
+  font-size: 35px;
+}
+
+mat-select {
+  height: 35px;
+}
+
+mat-option {
+  font-size: 35px;
+}
+
+textarea {
+  height: 35px;
+  font-size: 35px;
+}
+
+/deep/ .mat-form-field-appearance-legacy .mat-form-field-label {
+  font-size: 30px;
+  color: #F7FFFF;
+  line-height: 25px;
+}
+
+/deep/ .anpassenAnToolbox {
+  width: 265px;
+  margin-left: -17px;
+  margin-top: -10px;
+}
+
+/deep/ .anpassenAnToolbox .mat-expansion-panel-body{
+  padding: 9px !important;
+}
+
+/deep/ .mat-checkbox-layout {
+  margin-left: 8px;
+}
+
+.begrenzungAttribute {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.buttonAbstand {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+/deep/ .mat-raised-button {
+  font-size: 35px;
+}
+
+.checkboxAbstand {
+  margin-left: 10px;
+}
+
+mat-expansion-panel {
+    width: 100%;
+    margin-left: 1%;
+}
+
+.tabelleButton {
+  width: 400px;
+  padding-left: 20px;
+  height: 50px;
+}
+
+.tabelleButton .mat-button-wrapper {
+  font-size: 150px;
+}
+
+.checkboxAnpassen {
+  font-size: 30px;
+}
+
+.customscrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.customscrollbar::-webkit-scrollbar-track {
+    background: #555;
+    border-radius: 3px;
+}
+
+/* Handle */
+.customscrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+/* Handle on hover */
+.customscrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.detailmenu mat-form-field {
+    width: 95%;
+}
+/*------------------------------------- für auflösungen bis 2400px --------------------------------------------------*/
+@media screen and (max-width: 2400px) {
+
+  .groesseMenue {
+    font-size: 15px;
+  }
+
+  .menueAbstand {
+    margin-bottom: 8px;
+    padding-top: 0px;
+  }
+
+  input {
+    height: 20px;
+    font-size: 20px;
+  }
+
+  mat-select {
+    height: 20px;
+  }
+
+  mat-option {
+    font-size: 20px;
+  }
+
+  textarea {
+    height: 20px;
+    font-size: 20px;
+  }
+
+  .tabelleButton {
+    width: 170px;
+    padding-left: 10px;
+    height: 40px;
+  }
+
+  .tabelleButton .mat-button-wrapper {
+    font-size: 20px;
+  }
+
+  /deep/ .mat-form-field-appearance-legacy .mat-form-field-label {
+    font-size: 15px;
+    line-height: 12px;
+  }
+
+  .checkboxAnpassen {
+    font-size: 15px;
+  }
+
+  /deep/ .mat-raised-button {
+    font-size: 18px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1600px --------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+
+  .menueAbstand {
+    margin-bottom: 5px;
+  }
+
+  input {
+    height: 15px;
+    font-size: 15px;
+  }
+
+  mat-select {
+    height: 15px;
+  }
+
+  mat-option {
+    font-size: 15px;
+  }
+
+  textarea {
+    height: 15px;
+    font-size: 15px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    width: 78px !important;
+  }
+
+  /deep/ .mat-form-field-appearance-legacy .mat-form-field-label {
+    font-size: 12px !important;
+    line-height: 10px;
+  }
+
+  .checkboxAnpassen {
+    font-size: 12px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1200px --------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+
+  .groesseMenue {
+    font-size: 12px;
+  }
+
+  input {
+    height: 12px;
+    font-size: 12px;
+  }
+
+  mat-select {
+    height: 12px;
+  }
+
+  mat-option {
+    font-size: 12px;
+  }
+
+  textarea {
+    height: 12px;
+    font-size: 12px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    width: 65px !important;
+  }
+
+  .tabelleButton {
+    width: 130px;
+    padding-left: 5px;
+  }
+
+  .mat-raised-button {
+    font-size: 13px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 900px --------------------------------------------------*/
+@media screen and (max-width: 900px) {
+
+  .groesseMenue {
+    font-size: 10px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    width: 53px !important;
+  }
+
+  .tabelleButton {
+    width: 120px;
+  }
+
+  .tabelleButton .mat-button-wrapper {
+    font-size: 12px;
+  }
+}

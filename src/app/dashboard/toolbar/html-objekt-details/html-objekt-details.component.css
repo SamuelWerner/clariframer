@@ -1,0 +1,768 @@
+/* @author Yavuz Bulunmaz / Struktur durch Kommentare*/
+/*------------------------ Default Auflösung / optimiert für 4K (ab 2400px) -----------------------------------------*/
+
+input {
+  height: 35px;
+  font-size: 35px;
+}
+
+mat-select {
+  height: 35px;
+}
+
+mat-option {
+  font-size: 35px;
+}
+
+textarea {
+  height: 35px;
+  font-size: 35px;
+}
+
+/deep/ .detailmenuwrapper .mat-form-field-infix {
+  width: 280px !important;
+  height: 40px;
+}
+
+/deep/ .detailmenuwrapper .mat-expansion-panel-body {
+  padding: 10px 4px 5px 0px !important;
+}
+
+/deep/ .mat-form-field-appearance-legacy .mat-form-field-label {
+  font-size: 30px;
+  color: #F7FFFF;
+  line-height: 35px;
+}
+
+#hauptPanel {
+  font-size: 35px;
+}
+
+/*---------- detailMenü /4K----------*/
+.detailmenuwrapper {
+  margin: 3% !important;
+  background-color: #303030;
+  border-radius: 5px;
+}
+
+.detailMenuHead mat-button-toggle:first-child {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.detailMenuHead mat-button-toggle {
+  margin: 0px auto;
+}
+
+.detailMenuHead {
+  display: flex;
+  background-color: #2e2e2e;
+  flex-direction: row;
+  justify-content: center;
+  margin: -10px 11px 0px 0;
+  align-items: center;
+  position: absolute;
+  width: 94%;
+  left: 3%;
+  border-radius: 5px;
+}
+
+.detailmenu {
+  margin: 0 2px 0 2px;
+  padding-top: 50px;
+}
+
+.detailMenuHead mat-button-toggle-group {
+  width: 100%;
+}
+
+.detailMenuHead mat-button-toggle-group mat-button-toggle {
+  width: 20%;
+  text-align: center;
+}
+
+.erstesPanel {
+  margin: 0px 6px !important;
+}
+
+.label {
+  font-weight: 400;
+  color: rgb(145, 145, 145);
+}
+
+.w100 {
+  width: 100%;
+}
+
+.mat-icon {
+  height: 40px;
+}
+
+.auswahlCSS {
+  line-height: 40px !important;
+  padding-top: 10px;
+}
+
+#auswahlSpeziell {
+  padding-top: 5px;
+}
+/*---------- Letzte Reihe /4K----------*/
+.mat-toolbar-multiple-rows {
+  min-height: 30px;
+}
+
+.innererTextToolbox {
+  width: 100% !important;
+}
+
+.werkzeugReihe {
+  width: 460px;
+  display: inline;
+}
+
+.menue {
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  color: #F7FFFF;
+  font-size: 30px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.toolbarButton {
+  background-color: #0E4A7E;
+  width: 460px;
+  margin-top: 15px;
+  margin-left: 15px;
+  padding: 5px 0;
+}
+
+.buttonBild {
+  background-color: #363636;
+  position: absolute;
+  width: 66px;
+  height: 54px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 1px;
+  margin-right: 0px !important;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.buttonBild:hover {
+  background-color: #424242;
+}
+
+.buttonBild img {
+  width: 42px;
+}
+
+#saveButton {
+  margin-left: 85px;
+}
+
+/deep/ .mat-form-field-wrapper {
+  margin-left: 30px;
+}
+
+.toggleGridPosition {
+  font-size: 35px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-left: 175px;
+  background-color: #343834;
+}
+
+/*---------- Seitenverwaltung /4K----------*/
+.toolbar {
+  background-color: #363636;
+  border-radius: 8px;
+  width: 655px;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 5px 0;
+}
+
+#seitenListe {
+  margin-top: 32px;
+}
+
+/deep/ .seitenElement {
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  color: #F7FFFF;
+  font-size: 35px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+/deep/ .selected {
+  background-color: #00C4FF;
+  color: #363636;
+  border-radius: 5px;
+}
+
+#seitenName {
+  height: 50px;
+  font-size: 35px;
+}
+
+/deep/ .mat-form-field-infix{
+  height: auto;
+}
+
+#erstellenButton {
+  margin-left: 30px;
+  font-size: 30px;
+  padding: 5px 15px;
+}
+
+/deep/ .loeschenButton {
+  float: right;
+  cursor: pointer;
+}
+
+/deep/ .loeschenButton img {
+  width: 23px;
+  height: 23px;
+}
+
+.checkboxAbstand {
+  margin-left: 20px;
+}
+
+#seitenverwaltungSchliessen {
+  font-size: 32px;
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  color: #F7FFFF;
+  width: 650px;
+  margin: 18px 0;
+  padding-left: 30px;
+}
+
+#seitenverwaltungSchliessen span img {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  float: right;
+  margin-top: 3px;
+  margin-right: 20px;
+}
+
+#checkboxGrid {
+  font-size: 30px;
+}
+
+@media screen and (min-width: 2401px) {
+  .mat-expansion-panel-header {
+    padding: 1vw !important;
+
+  }
+
+  mat-panel-title {
+    font-size: 3rem !important;
+    border-radius: 10px;
+
+  }
+
+  .auswahlCSS {
+    font-size: 2rem;
+  }
+
+  .auswahlCSS mat-icon {
+    font-size: 2rem;
+  }
+}
+/*------------------------------------- für auflösungen bis 2400px --------------------------------------------------*/
+@media screen and (max-width: 2400px) {
+
+  /deep/ .mat-form-field-infix{
+    height: 10px;
+  }
+
+  input {
+    height: 20px;
+    font-size: 20px;
+  }
+
+  mat-select {
+    height: 20px;
+  }
+
+  mat-option {
+    font-size: 20px;
+  }
+
+  textarea {
+    height: 20px;
+    font-size: 20px;
+  }
+
+  /deep/ .detailmenuwrapper .mat-form-field-infix {
+    width: 123px !important;
+    padding-top: 0 !important;
+    height: 18px;
+  }
+
+  /deep/ .mat-form-field-appearance-legacy .mat-form-field-label {
+    font-size: 15px;
+    line-height: 10px;
+  }
+
+  #hauptPanel {
+    font-size: 18px;
+  }
+
+  /*---------- detailMenü /2400px----------*/
+  .detailmenuwrapper {
+    margin-bottom: 0;
+  }
+
+  .mat-icon {
+    height: 35px;
+  }
+
+  .auswahlCSS {
+    line-height: 24px !important;
+    padding-top: 8px;
+  }
+
+  #auswahlSpeziell {
+    padding-top: 4px;
+  }
+
+  /*---------- Letzte Reihe /2400px----------*/
+  .menue {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  #dashboardMenue {
+    font-size: 18px;
+  }
+
+  /deep/ .mat-form-field-wrapper {
+    margin-left: 30px;
+  }
+
+  .toolbarButton {
+    width: 280px;
+    margin-top: 15px;
+    margin-left: 15px;
+    padding: 5px 0;
+  }
+
+  .werkzeugReihe {
+    width: 280px;
+    height: 40px;
+    padding-left: 0;
+  }
+
+  .buttonBild {
+    width: 45px;
+    height: 35px;
+    padding-top: 8px;
+  }
+
+  .buttonBild img {
+    width: 24px;
+  }
+
+  #saveButton {
+    margin-left: 55px;
+  }
+
+  .toggleGridPosition {
+    margin-left: 110px;
+    font-size: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  /*---------- Seitenverwaltung /2400px----------*/
+  .toolbar {
+    width: 279px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 0 0;
+  }
+
+  #seitenListe {
+    margin-top: 20px;
+  }
+
+  /deep/ .loeschenButton img {
+    width: 10px;
+    height: 10px;
+  }
+
+  /deep/ .seitenElement {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    cursor: pointer;
+  }
+
+  /deep/ .mat-form-field-wrapper {
+    margin-left: 10px;
+  }
+
+  #seitenName {
+    height: 25px;
+    font-size: 20px;
+  }
+
+  #erstellenButton {
+    margin-left: 30px;
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .checkboxAbstand {
+    margin-left: 8px;
+  }
+
+  #seitenverwaltungSchliessen {
+    font-size: 18px;
+    width: 279px;
+    margin: 14px 0;
+    padding-left: 18px;
+  }
+
+  #seitenverwaltungSchliessen span img {
+    width: 14px;
+    height: 14px;
+    margin-top: 4px;
+    margin-right: 20px;
+  }
+
+  #checkboxGrid {
+    font-size: 15px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1600px --------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+
+  input {
+    height: 15px;
+    font-size: 15px;
+  }
+
+  mat-select {
+    height: 15px;
+  }
+
+  mat-option {
+    font-size: 15px;
+  }
+
+  textarea {
+    height: 15px;
+    font-size: 15px;
+  }
+
+  /deep/ .detailmenuwrapper .mat-form-field-infix {
+    width: 100px !important;
+  }
+
+  /deep/ .mat-form-field-appearance-legacy .mat-form-field-label {
+    font-size: 12px !important;
+    line-height: 15px !important;
+  }
+
+  #hauptPanel {
+    font-size: 15px;
+  }
+
+  /*---------- detailMenü /1600px----------*/
+  /*---------- Letzte Reihe /1600px----------*/
+  .toolbarButton {
+    width: 230px;
+    margin-top: 5px;
+    margin-left: 12px;
+  }
+
+  .werkzeugReihe {
+    width: 230px;
+    height: 35px;
+    padding-left: 0;
+  }
+
+  .buttonBild {
+    width: 35px;
+    height: 30px;
+    padding-top: 3px;
+  }
+
+  .buttonBild img {
+    width: 20px;
+  }
+
+  #saveButton {
+    margin-left: 40px;
+  }
+
+  .toggleGridPosition {
+    margin-left: 81px;
+    font-size: 12px;
+    height: 30px;
+  }
+
+  /*---------- Seitenverwaltung /1600px----------*/
+  .menue {
+    font-size: 17px;
+    padding-top: 8px;
+    margin-bottom: 10px;
+  }
+
+  #dashboardMenue {
+    font-size: 15px;
+  }
+
+  .toolbar {
+    width: 230px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  #seitenListe {
+    margin-top: 10px;
+  }
+
+  #seitenListe:last-child {
+    margin-bottom: 4px;
+  }
+
+  #seitenName {
+    height: 25px;
+    font-size: 20px;
+    width: 130px !important;
+  }
+
+  #erstellenButton {
+    margin-left: 8px;
+  }
+
+  /deep/ .loeschenButton img {
+    width: 10px;
+    height: 10px;
+  }
+
+  /deep/ .seitenElement {
+    font-size: 15px;
+    margin-left: 10px;
+  }
+
+  #seitenverwaltungSchliessen {
+    font-size: 14px;
+    width: 230px;
+    margin: 12px 0;
+  }
+
+  #seitenverwaltungSchliessen span img {
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+  }
+
+  .checkboxAbstand {
+    margin-left: 8px;
+  }
+
+  #checkboxGrid {
+    font-size: 12px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1200px --------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+
+  input {
+    height: 12px;
+    font-size: 12px;
+  }
+
+  mat-select {
+    height: 12px;
+  }
+
+  mat-option {
+    font-size: 12px;
+  }
+
+  textarea {
+    height: 12px;
+    font-size: 12px;
+  }
+
+  /deep/ .detailmenuwrapper .mat-form-field-infix {
+    width: 82px !important;
+  }
+
+  /*---------- detailMenü /1200px----------*/
+  /*---------- Letzte Reihe /1200px----------*/
+  .toolbarButton {
+    width: 190px;
+    margin-top: 0px;
+    margin-left: 12px;
+  }
+
+  .werkzeugReihe {
+    width: 190px;
+    height: 70px;
+  }
+
+  .buttonBild {
+    width: 32px;
+    height: 30px;
+    padding-top: 1px;
+  }
+
+  .buttonBild img {
+    width: 18px;
+  }
+
+  #saveButton {
+    margin-left: 40px;
+  }
+
+  .toggleGridPosition {
+    margin-top: 38px;
+    margin-left: 0px;
+    font-size: 11px;
+    height: 28px;
+  }
+
+  /*---------- Seitenverwaltung /1200px----------*/
+  .menue {
+    font-size: 15px;
+  }
+
+  #dashboardMenue {
+    font-size: 14px;
+  }
+
+  .toolbar {
+    width: 190px;
+  }
+
+  #seitenListe {
+    margin-top: 8px;
+  }
+
+  #seitenListe:last-child {
+    margin-bottom: 3px;
+  }
+
+  #seitenName {
+    height: 22px;
+    font-size: 18px;
+    width: 100px !important;
+  }
+
+  #erstellenButton {
+    margin-bottom: 5px;
+  }
+
+  #seitenverwaltungSchliessen {
+    font-size: 12px;
+    width: 195px;
+  }
+
+  #seitenverwaltungSchliessen span img {
+    margin-top: 1px;
+  }
+
+}
+
+/*------------------------------------- für auflösungen bis 900px --------------------------------------------------*/
+@media screen and (max-width: 900px) {
+
+  /deep/ .detailmenuwrapper .mat-form-field-infix {
+    width: 69px !important;
+  }
+
+  /deep/ .innerText .mat-form-field-infix {
+    width: 50px;
+  }
+
+  /*---------- detailMenü /900px----------*/
+  /*---------- Letzte Reihe /900px----------*/
+  .toolbarButton {
+    width: 160px;
+    margin-top: 0px;
+  }
+
+  .werkzeugReihe {
+    width: 160px;
+    height: 66px;
+  }
+
+  .toggleGridPosition {
+    margin-top: 36px;
+  }
+
+  .buttonBild {
+    padding-left: 0;
+  }
+
+  .detailMenuHead mat-button-toggle-group .mat-button-toggle-label-content:first-child {
+    font-size: 0.9em;
+  }
+
+  .detailMenuHead mat-button-toggle-group mat-button-toggle mat-icon {
+    padding-top: 0.5em;
+    font-size: 0.9em;
+  }
+
+  /*---------- Seitenverwaltung /900px----------*/
+  .menue {
+    font-size: 12px;
+  }
+
+  #dashboardMenue {
+    font-size: 11px;
+  }
+
+  .toolbar {
+    width: 160px;
+  }
+
+  #seitenListe {
+    margin-top: 7px;
+  }
+
+  #seitenListe:last-child {
+    margin-bottom: 2px;
+  }
+
+  #seitenName {
+    height: 20px;
+    font-size: 16px;
+  }
+
+  #erstellenButton {
+    margin-bottom: 5px;
+  }
+
+  #seitenverwaltungSchliessen {
+    font-size: 10px;
+    width: 170px;
+    margin: 9px 0;
+    padding-left: 14px;
+  }
+
+  #seitenverwaltungSchliessen span img {
+    width: 11px;
+    height: 11px;
+    margin-top: 0px;
+  }
+}
+

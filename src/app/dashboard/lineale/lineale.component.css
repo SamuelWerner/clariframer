@@ -1,0 +1,238 @@
+/* @author Samuel Werner <samuel.werner@iem.thm.de> */
+
+.linealHorizontalHD {
+  height: 19px !important;
+}
+
+.linealVertikalHD {
+  width: 19px !important;
+}
+
+.linealHorizontalUHD {
+  height: 59px !important;
+  width: 300px !important;
+  font-size: 30px !important;
+  left: 39px;
+  background-color: #f6f5f6 !important;
+}
+
+.linealHorizontalUHD span {
+  margin-top: 10px !important;
+  margin-left: 18px !important;
+}
+
+.linealVertikalUHD {
+  width: 59px !important;
+  height: 300px !important;
+  font-size: 30px !important;
+  top: 39px;
+  background-color: #f6f5f6 !important;
+}
+
+.linealVertikalUHD span {
+  margin-top: 40px !important;
+}
+
+.eckeLinealUHD {
+  width: 58px !important;
+  height: 58px !important;
+}
+
+.linealHorizontalQHD {
+  width: 50px !important;
+  background-color: #f6f5f6 !important;
+}
+
+.linealVertikalQHD {
+  height: 50px !important;
+  background-color: #f6f5f6 !important;
+}
+
+#platzhalterHorizontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+#platzhalterVertikal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+#platzhalterVertikalesLineal {
+  height: 100%;
+  width: 19px;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  margin-top: 19px;
+  background-color: #f6f5f6;
+}
+
+#platzhalterVertikalesLineal .vertikalesLinealStriche {
+  flex-flow: column;
+  width: 19px;
+  height: 100px;
+  background-image: url("images/vertical-ruler.png");
+  background-size: auto 100% !important;
+  padding-top: 1px;
+  word-wrap: break-word;
+  text-align: center;
+  border-top-width: 1px !important;
+}
+
+#platzhalterVertikalesLineal .vertikalesLinealStriche > span {
+  transform: rotate(-90deg);
+  margin-top: 10px;
+}
+
+#eckeLineal {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: #F5F5F6;
+  border-bottom: 1px solid rgba(37, 42, 43, 0.3);
+  border-right: 1px solid rgba(37, 42, 43, 0.3);
+}
+
+#eckeLineal {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: #F5F5F6;
+  border-bottom: 1px solid rgba(37, 42, 43, 0.3);
+  border-right: 1px solid rgba(37, 42, 43, 0.3)
+}
+
+#platzhalterHorizontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden
+}
+
+#platzhalterVertikal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden
+}
+
+#platzhalterHorizontalesLineal {
+  width: 100%;
+  height: 19px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  margin-left: 19px;
+  background-color: #f6f5f6;
+}
+
+#platzhalterHorizontalesLineal .horizontalesLinealStriche,
+#platzhalterHorizontalesLineal .vertikalesLinealStriche,
+#platzhalterVertikalesLineal .horizontalesLinealStriche,
+#platzhalterVertikalesLineal .vertikalesLinealStriche {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  /* display:flex; */
+  -ms-align-items: center;
+  -webkit-align-items: center;
+  /* align-items:center; */
+  -ms-box-align: center;
+  -webkit-box-align: center;
+  box-align: center;
+  -ms-flex-align: center;
+  -webkit-flex-align: center;
+  flex-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Open Sans", open-sans, sans-serif;
+  font-size: 10px;
+  color: #545E65;
+  color: rgba(37, 42, 43, 0.3);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-origin: border-box;
+  border: 0 solid rgba(37, 42, 43, 0.3);
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  float: left;
+}
+
+#platzhalterHorizontalesLineal .horizontalesLinealStriche.selection,
+#platzhalterHorizontalesLineal .vertikalesLinealStriche.selection,
+#platzhalterVertikalesLineal .horizontalesLinealStriche.selection,
+#platzhalterVertikalesLineal .vertikalesLinealStriche.selection {
+  position: absolute;
+  z-index: 3;
+  background-image: none !important;
+  background-color: rgba(37, 42, 43, 0.1);
+  float: none
+}
+
+#platzhalterHorizontalesLineal .horizontalesLinealStriche {
+  width: 100px;
+  height: 19px;
+  background-image: url("images/horizontal-ruler.png");
+  background-size: 100% auto !important;
+  border-left-width: 1px;
+  padding: 1px 0 0 5px;
+}
+
+#platzhalterHorizontalesLineal .horizontalesLinealStriche > span {
+  margin-top: 0px
+}
+
+#platzhalterVertikalesLineal .vertikalesLinealStriche {
+  -moz-flex-flow: column;
+  -ms-flex-flow: column;
+  -webkit-flex-flow: column;
+  flex-flow: column;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+#platzhalterVertikalesLineal .vertikalesLinealStriche > span {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  margin-top: 10px
+}
+
+#platzhalterHorizontalesLineal {
+  width: 100%;
+  height: 19px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  margin-left: 19px;
+  background-color: #f6f5f6;
+}

@@ -1,0 +1,236 @@
+<button mat-fab id="offCanvasMenuButton" (click)="toggleToolbar()"
+        [ngClass]="{'offCanvasMenuButtonToggle' : toolbarVerbergen}">
+  <mat-icon>build</mat-icon>
+</button>
+<div class="toolbox" appDragAndDropToolbox ID="no-print" [ngClass]="{'toolbarVerbergen': toolbarVerbergen}">
+  <!-- Balken zum minimieren der Toolbar-->
+  <div class="minifyToolbar" (click)="minimiereToolbar()"></div>
+
+  <div id="ersteReihe">
+    <div id="zusatzFunktionen" *ngIf="toolbarMinimieren">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="menueIcon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button class="nichtdrucken" mat-menu-item (click)="zeigeNavSeite()">Seitenverwaltung</button>
+        <button class="nichtdrucken" mat-menu-item (click)="alleHtmlObjekteLoeschen()">Seite leeren</button>
+        <button class="nichtdrucken" mat-menu-item [matMenuTriggerFor]="subMenuImport">Import</button>
+        <button class="nichtdrucken" mat-menu-item [matMenuTriggerFor]="subMenuExport">Export</button>
+        <button class="nichtdrucken" mat-menu-item (click)="drucken()">Drucken</button>
+        <button class="nichtdrucken" mat-menu-item (click)="openCodeAnzeigendialog()">
+          Zeige Code
+        </button>
+      </mat-menu>
+
+      <mat-menu #subMenuExport="matMenu">
+        <a class="nichtdrucken btn-clear" mat-menu-item (click)="generiereDownloadJsonUri()"
+           title="Download JSON"
+           [href]="downloadJsonHref"
+           download="Clariframer.json">
+          Export JSON
+        </a>
+
+        <a class="nichtdrucken btn-clear" mat-menu-item title="Download JSON"
+           [href]="generiereDownloadXMLUri()"
+           download="Clariframer.xml">
+          Export XML
+        </a>
+        <a class="nichtdrucken" id="exportPNG" mat-menu-item title="Export PNG"
+           [href]="" download="Clariframer.PNG"
+           (click)="generierePNG()">
+          Export PNG
+        </a>
+      </mat-menu>
+
+      <mat-menu #subMenuImport="matMenu">
+        <button class="nichtdrucken" mat-menu-item (click)="openImportJSONdialog()">
+          Import JSON
+        </button>
+        <button class="nichtdrucken" mat-menu-item (click)="openImportXMLdialog()">
+          Import XML
+        </button>
+      </mat-menu>
+
+    </div>
+    <span id="toolboxText">Toolbox</span>
+  </div>
+
+  <!--+++++++++++++++++++++++++++++++Auswahl Menü+++++++++++++++++++++++++++++++++++-->
+  <mat-accordion *ngIf="toolbarMinimieren">
+    <mat-expansion-panel class="expansionPanel" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="menue">
+          HTML Objekte
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <!--https://www.w3schools.com/Tags/default.asp-->
+      <mat-form-field id="domBausteinAuswahl">
+          <mat-select placeholder="DOM Elemente" [(value)]="ausgewaehlteDOMBausteinArt">
+          <mat-option value="av">Audio & Video</mat-option>
+          <mat-option value="basic">Basic</mat-option>
+          <mat-option value="format1">Formatierung A-P</mat-option>
+          <mat-option value="format2">Formatierung Q-Z</mat-option>
+          <mat-option value="framesUndImages">Frames & Images</mat-option>
+          <mat-option value="linksUndListen">Links & Listen</mat-option>
+          <mat-option value="stylesUndSemantics">Styles & Semantics</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--+++++++++++++++++++++++++++++++DOM ELEMENTE+++++++++++++++++++++++++++++++++++-->
+      <!-- TODO, wenn am Ende ein Menüpunkt zuviele Button hat (ab 4-5 reihen) sollen die Button verkleinert werden
+           Somit sind in dem Fall 4 Button in einer Reihe, das wird aber erst am Ende gemacht, da
+           noch nicht bekannt ist wie viele Elemente zur verfügung stehen werden
+           @author Yavuz Bulunmaz-->
+      <!-- TODO, Elemente die nicht implementiert wurden am Ende aus dem Menü entfernen!-->
+
+      <!---------------------------------Audio & Video------------------------------------->
+      <!--TODO: Audio/Video Tag fertig stellen -->
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='av'">
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === audioObjekt" id="audioErzeuger"
+                class="button" (click)="objektAuswaehlen(audioObjekt)">< audio</span>
+          <span [class.selected]="ausgewaehltesObjekt === videoObjekt" id="videoErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(videoObjekt)">< video</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <!------------------------------------Basic------------------------------------------>
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='basic'">
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === bodyObjekt" id="bodyErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(bodyObjekt)">< body</span>
+          <span [class.selected]="ausgewaehltesObjekt === formObjekt" id="formErzeuger"
+                class="button" (click)="neuesFormObjektErzeugen()">< form</span>
+          <span [class.selected]="ausgewaehltesObjekt === headlineObjekt" id="h1Erzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(headlineObjekt)">< headline</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === hrObjekt" id="hrErzeuger"
+                class="button" (click)="neuesHrObjektErstellen()">< hr</span>
+          <span [class.selected]="ausgewaehltesObjekt === pObjekt" id="pErzeuger" class="button"
+                (click)="auswaehlenUndZufaelligeFarbeZuweisen(pObjekt)">< p</span>
+          <span [class.selected]="ausgewaehltesObjekt === tableObjekt" id="tableErzeuger"
+                class="button" (click)="neuesTabellenObjektErzeugen()">< table</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <!---------------------------------Formatierung 1--------------------------------------->
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='format1'">
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === addressObjekt" id="addressErzeuger"
+                class="button" (click)="neuesAddressObjektErstellen()">< address</span>
+          <span  [class.selected]="ausgewaehltesObjekt === bdoObjekt"
+                 id="bdoErzeuger" class="button" (click)="neuesBdoObjektErzeugen()">< bdo</span>
+          <span  [class.selected]="ausgewaehltesObjekt === blockquoteObjekt"
+                 id="blockquoteErzeuger" class="button wortZuLang" (click)="neuesBlockquoteObjektErzeugen()">< blockquote</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span  [class.selected]="ausgewaehltesObjekt === codeObjekt"
+                 id="codeErzeuger" class="button" (click)="neuesCodeObjektErstellen()">< code</span>
+          <span [class.selected]="ausgewaehltesObjekt === emObjekt" id="emErzeuger"
+                class="button" (click)="neuesEmObjektErstellen()">< em</span>
+          <span  [class.selected]="ausgewaehltesObjekt === kbdObjekt"
+                 id="kbdErzeuger" class="button" (click)="neuesKbdObjektErstellen()">< kbd</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === meterObjekt" id="meterErzeuger"
+                class="button" (click)="neuesMeterObjektErzeugen()">< meter</span>
+          <span [class.selected]="ausgewaehltesObjekt === preObjekt" id="preErzeuger"
+                class="button" (click)="neuesPreObjektErstellen()">< pre</span>
+          <span [class.selected]="ausgewaehltesObjekt === progressObjekt" id="progressErzeuger"
+                class="button" (click)="neuesProgressObjektErzeugen()">< progress</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <!---------------------------------Formatierung 2--------------------------------------->
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='format2'">
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === qObjekt" id="qErzeuger"
+                class="button" (click)="neuesQObjektErzeugen()">< q</span>
+          <span [class.selected]="ausgewaehltesObjekt === sObjekt" id="sErzeuger"
+                class="button" (click)="neuesSObjektErstellen()">< s</span>
+          <span [class.selected]="ausgewaehltesObjekt === sampObjekt" id="sampErzeuger"
+                class="button" (click)="neuesSampObjektErstellen()">< samp</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === smallObjekt" id="smallErzeuger"
+                class="button" (click)="neuesSmallObjektErstellen()">< small</span>
+          <span [class.selected]="ausgewaehltesObjekt === strongObjekt" id="strongErzeuger"
+                class="button" (click)="neuesStrongObjektErstellen()">< strong</span>
+          <span [class.selected]="ausgewaehltesObjekt === uObjekt" id="uErzeuger"
+                class="button" (click)="neuesUObjektErstellen()">< u</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === varObjekt" id="varErzeuger"
+                class="button" (click)="neuesVarObjektErstellen()">< var</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+      <!---------------------------------Frames & Images------------------------------------->
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='framesUndImages'">
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === canvasObjekt" id="canvasErzeuger"
+                class="button" (click)="objektAuswaehlen(canvasObjekt)">< canvas</span>
+          <span [class.selected]="ausgewaehltesObjekt === figureObjekt" id="figureErzeuger"
+                class="button" (click)="neuesFigureObjektErzeugen()">< figure</span>
+          <span [class.selected]="ausgewaehltesObjekt === imgObjekt" id="imgErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(imgObjekt)">< img</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === pictureObjekt" id="pictureErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(pictureObjekt)">< picture</span>
+          <span [class.selected]="ausgewaehltesObjekt === svgObjekt" id="svgErzeuger"
+                class="button" (click)="objektAuswaehlen(svgObjekt)"> < svg</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <!-------------------------------Links & Listen--------------------------------------------->
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='linksUndListen'">
+        <mat-toolbar-row class="buttonReihe">
+                   <span [class.selected]="ausgewaehltesObjekt === aObjekt" id="aErzeuger"
+                         class="button" (click)="neuesAElementErstellen()">< a</span>
+          <span [class.selected]="ausgewaehltesObjekt === navObjekt" id="navErzeuger"
+                class="button" (click)="neuesNavObjektErzeugen()">< nav</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === dlObjekt" id="dlErzeuger"
+                class="button" (click)="neuesDlObjektErzeugen()">< dl</span>
+          <span [class.selected]="ausgewaehltesObjekt === olObjekt" id="olErzeuger"
+                class="button" (click)="neuesOlObjektErzeugen()">< ol</span>
+          <span [class.selected]="ausgewaehltesObjekt === ulObjekt" id="ulErzeuger"
+                class="button" (click)="neuesUlObjektErzeugen()">< ul</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <!---------------------------------Styles & Semantics---------------------------------->
+      <mat-toolbar class="toolbar" *ngIf="ausgewaehlteDOMBausteinArt=='stylesUndSemantics'">
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === articleObjekt" id="articleErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(articleObjekt)">< article</span>
+          <span [class.selected]="ausgewaehltesObjekt === asideObjekt" id="asideErzeuger"
+                class="button" (click)="neuesAsideObjektErstellen()">< aside</span>
+          <span [class.selected]="ausgewaehltesObjekt === detailsObjekt" id="detailsErzeuger"
+                class="button" (click)="neuesDetailsObjektErzeugen()">< details</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === dialogObjekt" id="dialogErzeuger"
+                class="button" (click)="neuesDialogObjektErstellen()">< dialog</span>
+          <span [class.selected]="ausgewaehltesObjekt === divObjekt" id="divErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(divObjekt)">< div</span>
+          <span [class.selected]="ausgewaehltesObjekt === footerObjekt" id="footerErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(footerObjekt)">< footer</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === headerObjekt" id="headerErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(headerObjekt)">< header</span>
+          <span [class.selected]="ausgewaehltesObjekt === mainObjekt" id="mainErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(mainObjekt)">< main</span>
+          <span [class.selected]="ausgewaehltesObjekt === sectionObjekt" id="sectionErzeuger"
+                class="button" (click)="neuesSectionObjektErstellen()">< section</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="buttonReihe">
+          <span [class.selected]="ausgewaehltesObjekt === spanObjekt" id="spanErzeuger"
+                class="button" (click)="auswaehlenUndZufaelligeFarbeZuweisen(spanObjekt)">< span</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </mat-expansion-panel>
+
+    <!-- Hier wird die Box erstellt, die die css-eigenschaften anzeigt-->
+    <app-html-objekt-details></app-html-objekt-details>
+  </mat-accordion>
+</div>

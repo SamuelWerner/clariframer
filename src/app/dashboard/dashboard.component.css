@@ -1,0 +1,11 @@
+/* @author Samuel Werner <samuel.werner@iem.thm.de> */
+#dashboard {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  overflow: hidden;
+  z-index: 1;
+}

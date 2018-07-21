@@ -1,0 +1,78 @@
+h2 {
+  font-size: 32px;
+  -webkit-margin-before: 10px !important;
+  -webkit-margin-after: 25px  !important;
+  text-align: center;
+}
+
+#inputJSON {
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+#buttonJSON {
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 2400px) {
+  h2 {
+    font-size: 24px;
+    -webkit-margin-before: 15px !important;
+    -webkit-margin-after: 15px  !important;
+  }
+
+  #inputJSON {
+    font-size: 16px;
+    margin-left: 0px;
+  }
+
+  #buttonJSON {
+    font-size: 16px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  h2 {
+    font-size: 22px;
+    -webkit-margin-before: 12px !important;
+    -webkit-margin-after: 16px  !important;
+  }
+
+  #inputJSON {
+    font-size: 13px;
+  }
+
+  #buttonJSON {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  h2 {
+    font-size: 20px;
+    -webkit-margin-before: 10px !important;
+    -webkit-margin-after: 14px  !important;
+  }
+
+  #buttonJSON {
+    margin-top: 14px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  h2 {
+    font-size: 18px;
+    -webkit-margin-before: 10px !important;
+    -webkit-margin-after: 10px  !important;
+  }
+
+  #inputJSON {
+    font-size: 15px;
+  }
+
+  #buttonJSON {
+    font-size: 15px;
+  }
+}

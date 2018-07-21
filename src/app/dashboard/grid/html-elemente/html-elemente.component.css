@@ -1,0 +1,126 @@
+.zeigerDrop {
+  position: absolute !important;
+  left: -7px !important;
+  top: -7px !important;
+  width: 25px !important;
+  height: 25px !important;
+  content: url("../../../../assets/pointer.png");
+}
+
+.selected, .markiertesElement {
+  outline: 0.3rem dotted rgba(0, 0, 0, 0.69) !important;
+  outline-offset: -3px;
+}
+
+/deep/ .unterSeiteLink {
+  cursor: pointer;
+}
+
+/* Formular ######################################################################
+
+input{
+  font-size: 20px;
+}
+
+select{
+  width:200px;
+  height:26px;
+  font-size: 18px;
+}
+
+textarea{
+  font-size: 18px;
+}
+
+fieldset{
+  font-size: 18px;
+}
+
+.containerFormular{
+  margin:0px 20px;
+}
+
+div > label{
+  width: 100%;
+}
+
+form {
+  padding:10px 10px;
+  margin:auto;
+  background-color: #eee;
+  width: 100%;  Breite des Formulars
+  min-width:350px;
+  max-width: 546px;
+  border: 0em solid #8c8c8c;
+}
+
+fieldset{
+  border:none;
+}
+
+.center{
+  vertical-align: center;
+  text-align: center;
+  font-size:30px;
+  margin-top:30px;
+  margin-bottom:30px;
+}
+
+.inputWidth{
+  width:100%;
+  max-width:400px;
+}
+
+
+.buttonRow{
+  font-size: 1.2em;
+  text-align: right;
+  width:100%;
+}
+
+button{
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+  margin:25px;
+  border-radius: 10px;
+  border-color:none;
+  background-color: blue;
+  color:white;
+  padding:6px;
+  cursor:pointer;
+}
+
+
+.boxsizingBorder {
+  width:100%;
+  height:180px;
+  top:210px;
+  left:100px;
+  max-width: 400px;
+}
+
+.row {
+  display: inline-flex;
+  width:100%;
+}
+
+.col{
+  width:100%;
+  margin:10px;
+}
+
+.leftside{
+  width:120px;
+  font-size:14px;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
+}
+*/

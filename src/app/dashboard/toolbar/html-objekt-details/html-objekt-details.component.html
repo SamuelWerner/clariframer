@@ -1,0 +1,386 @@
+<mat-expansion-panel *ngIf="ausgewaehltesObjekt && !seitenNavService.navMenue" class="detailmenuwrapper">
+  <mat-expansion-panel-header (click)="zeigeObjektDetails(ausgewaehltesObjekt.tagName)">
+    <mat-panel-title id="hauptPanel">
+      < {{ausgewaehltesObjekt.tagName}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="detailMenuHead">
+    <mat-button-toggle-group #group="matButtonToggleGroup" [value]="seitenNavService.ausgewaehlterButton"
+                             (change)="aufValueAenderungenImToggleButtonMenueReagieren(group.value)">
+      <mat-button-toggle class="auswahlCSS" value="attribute" mat-icon-button matTooltipPosition="above"
+                         matTooltip="Attribute & Einstellungen"
+                         id="auswahlSpeziell" (click)="zeigeObjektDetails(ausgewaehltesObjekt.tagName)">
+        < / >
+      </mat-button-toggle>
+      <mat-button-toggle value="allgemein" mat-icon-button matTooltipPosition="above" matTooltip="CSS Allgemein"
+                         class="auswahlCSS" (click)="zeigeObjektDetails('allgemein')">
+        <mat-icon>settings</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="umrandung" mat-icon-button matTooltipPosition="above" matTooltip="CSS Umrandung"
+                         class="auswahlCSS" (click)="zeigeObjektDetails('umrandung')">
+        <mat-icon>rounded_corner</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="ausrichtung" mat-icon-button matTooltipPosition="above" matTooltip="CSS Ausrichtung"
+                         class="auswahlCSS" (click)="zeigeObjektDetails('ausrichtung')">
+        <mat-icon>dashboard</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="text" mat-icon-button matTooltipPosition="above" matTooltip="CSS Text"
+                         class="auswahlCSS" (click)="zeigeObjektDetails('text')">
+        <mat-icon>text_fields</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <!-- CSS Allgemein  ###############################################################################################################-->
+  <div class="detailmenu" *ngIf="seitenNavService.menuePunkt=='allgemein'">
+    <mat-form-field>
+      <input matTooltip="Die Zahl plus eine Einheit (z.B. 15px)" matInput placeholder="width"
+             [(ngModel)]="ausgewaehltesObjekt.width" type="text" maxlength="6">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="Die Zahl plus eine Einheit (z.B. 15px)" matInput placeholder="height"
+             [(ngModel)]="ausgewaehltesObjekt.height" type="text" maxlength="6">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="background-color" [(ngModel)]="ausgewaehltesObjekt.background_color" type="color"
+             maxlength="7">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="Positive ganze Zahlen" matInput placeholder="z-index" [(ngModel)]="ausgewaehltesObjekt.z_index"
+             type="number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="Werte zwischen 0 und 1 (z.B. 0.7)" matInput placeholder="opacity"
+             [(ngModel)]="ausgewaehltesObjekt.opacity" type="number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="overflow" [(ngModel)]="ausgewaehltesObjekt.overflow">
+        <mat-option value="auto">auto</mat-option>
+        <mat-option value="scroll">scroll</mat-option>
+        <mat-option value="visible">visible</mat-option>
+        <mat-option value="hidden">hidden</mat-option>
+        <mat-option value="no-display">no-display</mat-option>
+        <mat-option value="no-content">no-content</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="visibility" [(ngModel)]="ausgewaehltesObjekt.visibility">
+        <mat-option value="visible">visible</mat-option>
+        <mat-option value="hidden">hidden</mat-option>
+        <mat-option value="collapse">collapse</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- CSS Umrandung ###############################################################################################################-->
+  <div class="detailmenu" *ngIf="seitenNavService.menuePunkt=='umrandung'">
+    <mat-form-field>
+      <input matTooltip="z.B. 1px solid black" matInput placeholder="border" [(ngModel)]="ausgewaehltesObjekt.border"
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="border-color" [(ngModel)]="ausgewaehltesObjekt.border_color" type="color"
+             maxlength="7">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="border-style" [(ngModel)]="ausgewaehltesObjekt.border_style">
+        <mat-option value="none">none</mat-option>
+        <mat-option value="hidden">hidden</mat-option>
+        <mat-option value="dotted">dotted</mat-option>
+        <mat-option value="dashed">dashed</mat-option>
+        <mat-option value="solid">solid</mat-option>
+        <mat-option value="double">double</mat-option>
+        <mat-option value="groove">groove</mat-option>
+        <mat-option value="ridge">ridge</mat-option>
+        <mat-option value="inset">inset</mat-option>
+        <mat-option value="outset">outset</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 30px" matInput placeholder="border-radius" [(ngModel)]="ausgewaehltesObjekt.border_radius"
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 10px 10px 10px 10px" matInput placeholder="margin"
+             [(ngModel)]="ausgewaehltesObjekt.margin" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 10px 10px 10px 10px" matInput placeholder="padding"
+             [(ngModel)]="ausgewaehltesObjekt.padding" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 5px solid black" matInput placeholder="outline" [(ngModel)]="ausgewaehltesObjekt.outline"
+             type="text">
+    </mat-form-field>
+  </div>
+  <!-- CSS Ausrichtung ###############################################################################################################-->
+  <div class="detailmenu" *ngIf="seitenNavService.menuePunkt=='ausrichtung'">
+    <mat-form-field>
+      <mat-select placeholder="position" [(ngModel)]="ausgewaehltesObjekt.position">
+        <mat-option value="absolute">absolute</mat-option>
+        <mat-option value="fixed">fixed</mat-option>
+        <mat-option value="relative">relative</mat-option>
+        <mat-option value="static">static</mat-option>
+        <mat-option value="sticky">sticky</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. translate3d(0px, 0px, 0px)" matInput placeholder="transform"
+             [(ngModel)]="ausgewaehltesObjekt.transform" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 100px" matInput placeholder="top" [(ngModel)]="ausgewaehltesObjekt.position_y"
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 100px" matInput placeholder="left" [(ngModel)]="ausgewaehltesObjekt.position_x"
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="float" [(ngModel)]="ausgewaehltesObjekt.float">
+        <mat-option value="none">none</mat-option>
+        <mat-option value="left">left</mat-option>
+        <mat-option value="right">right</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="clear" [(ngModel)]="ausgewaehltesObjekt.clear">
+        <mat-option value="none">none</mat-option>
+        <mat-option value="left">left</mat-option>
+        <mat-option value="right">right</mat-option>
+        <mat-option value="right">both</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="display" [(ngModel)]="ausgewaehltesObjekt.display">
+        <mat-option value="inline">inline</mat-option>
+        <mat-option value="block">block</mat-option>
+        <mat-option value="contents">contents</mat-option>
+        <mat-option value="flex">flex</mat-option>
+        <mat-option value="grid">grid</mat-option>
+        <mat-option value="inline-block">inline-block</mat-option>
+        <mat-option value="inline-flex">inline-flex</mat-option>
+        <mat-option value="inline-grid">inline-grid</mat-option>
+        <mat-option value="inline-table">inline-table</mat-option>
+        <mat-option value="list-item">list-item</mat-option>
+        <mat-option value="run-in">run-in</mat-option>
+        <mat-option value="table">table</mat-option>
+        <mat-option value="none">none</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- CSS Text ###############################################################################################################-->
+  <div class="detailmenu" *ngIf="seitenNavService.menuePunkt=='text'">
+    <mat-form-field matTooltip="Der Text zwischen dem öffnenden und schließenden Tag" class="innererTextToolbox">
+        <textarea matInput placeholder="inner-text" [(ngModel)]="ausgewaehltesObjekt.innererText" type="text"
+                  id="innerText">
+        </textarea>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <input matTooltip="z.B. 15px" matInput placeholder="font-size" [(ngModel)]="ausgewaehltesObjekt.font_size"
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matTooltip="z.B. Verdana" matInput placeholder="font-family" [(ngModel)]="ausgewaehltesObjekt.font_family"
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="text-align" [(ngModel)]="ausgewaehltesObjekt.text_align">
+        <mat-option value="left">left</mat-option>
+        <mat-option value="right">right</mat-option>
+        <mat-option value="center">center</mat-option>
+        <mat-option value="justify">justify</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Farbe" [(ngModel)]="ausgewaehltesObjekt.color" type="color"
+             maxlength="7">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="word-wrap" [(ngModel)]="ausgewaehltesObjekt.word_wrap">
+        <mat-option value="normal">normal</mat-option>
+        <mat-option value="break-word">break-word</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="word-break" [(ngModel)]="ausgewaehltesObjekt.word_break">
+        <mat-option value="normal">normal</mat-option>
+        <mat-option value="break-all">break-all</mat-option>
+        <mat-option value="keep-all">keep-all</mat-option>
+        <mat-option value="break-word">break-word</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="white-space" [(value)]="ausgewaehltesObjekt.white_space">
+        <mat-option value="normal">normal</mat-option>
+        <mat-option value="nowrap">nowrap</mat-option>
+        <mat-option value="pre">pre</mat-option>
+        <mat-option value="pre-line">pre-line</mat-option>
+        <mat-option value="pre-wrap">pre-wrap</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="font-style" [(value)]="ausgewaehltesObjekt.font_style">
+        <mat-option value="normal">normal</mat-option>
+        <mat-option value="italic">italic</mat-option>
+        <mat-option value="oblique">oblique</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="font-weight" [(value)]="ausgewaehltesObjekt.font_weight">
+        <mat-option value="normal">normal</mat-option>
+        <mat-option value="bold">bold</mat-option>
+        <mat-option value="bolder">bolder</mat-option>
+        <mat-option value="lighter">lighter</mat-option>
+        <mat-option value="number">number</mat-option>
+        <mat-option value="initial">initial</mat-option>
+        <mat-option value="inherit">inherit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div class="detailmenu"
+       *ngIf="seitenNavService.menuePunkt!='allgemein' && seitenNavService.menuePunkt!='umrandung' &&
+              seitenNavService.menuePunkt!='ausrichtung' && seitenNavService.menuePunkt!='text'">
+    <app-html-attribute></app-html-attribute>
+  </div>
+</mat-expansion-panel>
+
+
+<!-- Seitenverwaltung (für die Mehrseitigkeit) @created by Yavuz Bulunmaz ###########################################-->
+<!-- das [expanded]="true" wirft in der Browserkonsole einen Fehler auf, dies kann man entfernen indem man den
+        Produktions-Modus aktiviert. Dies wird aber hier noch nicht getan, da der Produktions-Modus nur bei fertiger
+         Anwendung aktiviert wird -->
+
+<ng-container *ngIf="seitenNavService.navMenue" class="erstesPanel">
+
+  <div id="seitenverwaltungSchliessen">
+    <span>Seitenverwaltung schließen</span>
+    <span (click)="schliesseSeitenverwaltung()"> <img src="assets/images/cancel-weiss.svg"> </span>
+  </div>
+  <mat-expansion-panel id="seitenverwaltung" class="toolbar" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="menue">
+        Seitenverwaltung
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input id="seitenName" matInput placeholder="Seitenname" type="text" maxlength="23">
+    </mat-form-field>
+
+    <button id="erstellenButton" mat-raised-button (click)="erstelleSeite()">Erstellen</button>
+
+    <div id="seitenListe" *ngFor="let seite of this.seitenNavService.seitenListe">
+      <div class="elementSammler">
+        <span class="seitenElement" (click)=ladeSeite(seite)
+              [class.selected]="seite == this.gridObjekteService.holeAktuelleSeitenId()"> {{seite}} </span>
+        <span *ngIf="seite !== 'homepage'" class="loeschenButton"
+              (click)="loescheSeitePasseSeitenListeAnLadeHomepage(seite)"> <img src="assets/images/cancel.svg">
+        </span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="toolbar">
+    <mat-expansion-panel-header>
+      <mat-panel-title id="dashboardMenue" class="menue">
+        Dashboard Einstellungen
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!--Expansion Panel für Grideinstellungen @created by Sabrina Adam-->
+    <p class="label">Ausrichten an:</p>
+    <mat-select [(ngModel)]="ausgewaehlteSnapWeite" (ngModelChange)="OptionenVerteilen()">
+      <mat-option *ngFor="let op of snapWeiteOptionen" [value]="op.id">
+        {{ op.viewValue }}
+      </mat-option>
+    </mat-select>
+
+    <p class="label">Sonstige:</p>
+    <p>
+      <mat-checkbox id="checkboxGrid" [(ngModel)]="gridAnzeigen" (ngModelChange)="OptionenVerteilen()">Grid
+        anzeigen
+      </mat-checkbox>
+    </p>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Farbe" [(ngModel)]="gridFarbe" (ngModelChange)="OptionenVerteilen()" type="color"
+             maxlength="7">
+    </mat-form-field>
+
+
+  </mat-expansion-panel>
+</ng-container>
+
+<!-- BUTTONS ######################################################################################################-->
+<ng-container *ngIf="ausgewaehltesObjekt">
+  <mat-toolbar class="toolbarButton">
+    <mat-toolbar-row class="werkzeugReihe">
+
+        <span class="buttonBild" id="trashCan" (click)="htmlObjektLoeschen()" matTooltip="Löscht das aktuell gewählte Element">
+          <img src="./assets/images/garbage.svg">
+        </span>
+
+      <span class="buttonBild" id="saveButton" (click)="speicherSeite()" matTooltip="Speichert die komplette Seite">
+          <img src="./assets/images/save-icon.svg">
+        </span>
+
+      <mat-button-toggle-group
+        matTooltip="Wirkt sich auf alle Grid Elemente aus. Die Weite der Elemente wird für static deaktiviert."
+        name="gridPosition"
+        aria-label="Grid Position"
+        class="toggleGridPosition">
+        <mat-button-toggle (change)="positionAllerObjekteAufDemGridVeraendern('absolute', false)" value="bold" id="absoluteErzeuger">
+          Absolute
+        </mat-button-toggle>
+        <mat-button-toggle (change)="positionAllerObjekteAufDemGridVeraendern('static', true)" value="static" id="staticErzeuger">Static
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ng-container>

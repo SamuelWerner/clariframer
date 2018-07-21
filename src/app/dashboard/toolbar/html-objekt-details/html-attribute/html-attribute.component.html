@@ -1,0 +1,873 @@
+<mat-accordion>
+
+  <mat-expansion-panel [expanded]="true" class="detailmenuwrapper, anpassenAnToolbox">
+    <mat-expansion-panel-header class="menueAbstand">
+      <mat-panel-title class="groesseMenue">
+        Attribute & Spezial
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- HEADLINE ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute"
+         *ngIf="seitenNavService.menuePunkt=='h1' || seitenNavService.menuePunkt=='h2' ||
+              seitenNavService.menuePunkt=='h3' || seitenNavService.menuePunkt=='h4' ||
+              seitenNavService.menuePunkt=='h5' || seitenNavService.menuePunkt=='h6'">
+
+      <mat-form-field>
+        <mat-select placeholder="Typ" [(value)]="headlineCast().tagName">
+          <mat-option (click)="changeInnerHtml()" value="h1">h1</mat-option>
+          <mat-option (click)="changeInnerHtml()" value="h2">h2</mat-option>
+          <mat-option (click)="changeInnerHtml()" value="h3">h3</mat-option>
+          <mat-option (click)="changeInnerHtml()" value="h4">h4</mat-option>
+          <mat-option (click)="changeInnerHtml()" value="h5">h5</mat-option>
+          <mat-option (click)="changeInnerHtml()" value="h6">h6</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </div>
+
+
+    <!-- TABELLEN ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute"
+         *ngIf="seitenNavService.menuePunkt == 'table' && ausgewaehltesObjekt.tagName == 'table'">
+      <mat-form-field>
+        <input matInput placeholder="Zeilen tbody" (ngModelChange)="tabelleErstellen()" [(ngModel)]="tableCast().anzahlZeilen"
+               type="number"
+               maxlength="2">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Spalten tbody" (ngModelChange)="tabelleErstellen()"
+               [(ngModel)]="tableCast().anzahlSpalten" type="number"
+               maxlength="2">
+      </mat-form-field> <br>
+
+       <button class="tabelleButton" id="theadErzeuger" mat-raised-button color="primary" style="margin:0.2rem" (click)="tabelleGruppierungAuswaehlen('thead')" > < thead auswählen </button> <br>
+       <button class="tabelleButton" id="tbodyErzeuger" mat-raised-button color="warn" style="margin:0.2rem" (click)="tabelleGruppierungAuswaehlen('tbody')" > < tbody auswählen </button> <br>
+       <button class="tabelleButton" id="tfootErzeuger" mat-raised-button color="#234a34" style="margin:0.2rem; background-color:green!important;" (click)="tabelleGruppierungAuswaehlen('tfoot')" > < tfoot auswählen </button>
+    </div>
+
+    <!-- TD ELEMENTE ######################################################################################################-->
+
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'td'">
+
+      <mat-form-field>
+        <input matInput placeholder="colspan" [(ngModel)]="tdCast().colspan" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="rowspan" [(ngModel)]="tdCast().rowspan" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="headers" [(ngModel)]="tdCast().headers" type="text">
+      </mat-form-field>
+    </div>
+
+    <!-- TH ELEMENTE ######################################################################################################-->
+
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'th'">
+
+      <mat-form-field>
+        <input matInput placeholder="colspan" [(ngModel)]="thCast().colspan" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="headers" [(ngModel)]="thCast().headers" type="text">
+      </mat-form-field>
+    </div>
+
+    <!-- IMAGE ELEMENTE ######################################################################################################-->
+
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'img'">
+
+
+      <button id="mapAreaErzeuger" *ngIf="imgCast().usemap == null" matTooltip="Es wird am linken Rand eine Klickbare map mit area eingefügt" class="buttonAbstand" (click)="erzeugeMapAreaElementFuerImage()" mat-raised-button>
+        < map < area
+      </button>
+      <button class="buttonAbstand" id="areaErzeuger" *ngIf="imgCast().usemap != null" mat-raised-button color="primary" style="margin:0.2rem" (click)="areaInImageAuswaehlen()" > < area auswahlen </button>
+
+      <mat-form-field>
+        <input matInput placeholder="src" [(ngModel)]="imgCast().src" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="alt" [(ngModel)]="imgCast().alt" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="crossorigin" [(ngModel)]="imgCast().crossorigin" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="ismap" [(ngModel)]="imgCast().ismap" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="longdesc" [(ngModel)]="imgCast().longdesc" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="sizes" [(ngModel)]="imgCast().sizes" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="srcset" [(ngModel)]="imgCast().srcset" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="usemap" [(ngModel)]="imgCast().usemap" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="width" [(ngModel)]="imgCast().width" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="height" [(ngModel)]="imgCast().height" type="text">
+      </mat-form-field>
+    </div>
+
+    <!-- AREA ELEMENT ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'area'">
+
+
+      <mat-form-field>
+        <input matTooltip="z.B. 90,58,3 für circle" matInput placeholder="coords" [(ngModel)]="areaCast().coords"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="shape" [(value)]="areaCast().shape">
+          <mat-option value="default">default</mat-option>
+          <mat-option value="rect">rect</mat-option>
+          <mat-option value="circle">circle</mat-option>
+          <mat-option value="poly">poly</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="target" [(ngModel)]="areaCast().target"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="download" [(ngModel)]="areaCast().download"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="href" [(ngModel)]="areaCast().href"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="hreflang" [(ngModel)]="areaCast().hreflang"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="media" [(ngModel)]="areaCast().media"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="alt" [(ngModel)]="areaCast().alt"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="rel" [(value)]="areaCast().rel">
+          <mat-option value="alternate">alternate</mat-option>
+          <mat-option value="author">author</mat-option>
+          <mat-option value="bookmark">bookmark</mat-option>
+          <mat-option value="external">external</mat-option>
+          <mat-option value="help">help</mat-option>
+          <mat-option value="license">license</mat-option>
+          <mat-option value="next">next</mat-option>
+          <mat-option value="nofollow">nofollow</mat-option>
+          <mat-option value="noreferrer">noreferrer</mat-option>
+          <mat-option value="noopener">noopener</mat-option>
+          <mat-option value="prev">prev</mat-option>
+          <mat-option value="search">search</mat-option>
+          <mat-option value="tag">tag</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="type" [(ngModel)]="areaCast().type"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+    </div>
+
+    <!-- FORM ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'form'">
+
+      <button class="buttonAbstand" id="fieldsetErzeuger" (click)="erzeugeFieldsetElementFuerForm()" mat-raised-button>
+        < fieldset
+      </button>
+      <button class="buttonAbstand" id="buttonErzeuger" (click)="erzeugeButtonElementFuerForm()" mat-raised-button>
+        < button
+      </button>
+
+      <br>
+      <button class="buttonAbstand" id="inputErzeuger" (click)="erzeugeInputElementFuerForm()" mat-raised-button>
+        < input
+      </button>
+      <button class="buttonAbstand" id="outputErzeuger" (click)="erzeugeOutputElementFuerForm()" mat-raised-button>
+        < output
+      </button>
+
+      <br>
+
+      <button class="buttonAbstand" id="selectErzeuger" (click)="erzeugeSelectElementFuerForm()" mat-raised-button>
+        < select
+      </button>
+      <button class="buttonAbstand" id="textareaErzeuger" (click)="erzeugeTextareaElementFuerForm()" mat-raised-button>
+        < textarea
+      </button>
+
+
+      <br>
+      <mat-form-field>
+        <mat-select placeholder="Method" [(value)]="formCast().method">
+          <mat-option value="get">get</mat-option>
+          <mat-option value="post">post</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="action" maxlength="40" [(ngModel)]="formCast().action" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="autocomplete" maxlength="40" [(ngModel)]="formCast().autocomplete" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="enctype" maxlength="40" [(ngModel)]="formCast().enctype" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="target" maxlength="40" [(ngModel)]="formCast().target" type="text">
+      </mat-form-field>
+    </div>
+
+    <!-- FIELDSET ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'fieldset'">
+      <button class="buttonAbstand" id="inputErzeuger" (click)="erzeugeInputElementFuerForm()" mat-raised-button>
+        < input
+      </button>
+      <button class="buttonAbstand" id="button1Erzeuger" (click)="erzeugeButtonElementFuerForm()" mat-raised-button>
+        < button
+      </button>
+
+      <br>
+
+      <button class="buttonAbstand" id="selectErzeuger" (click)="erzeugeSelectElementFuerForm()" mat-raised-button>
+        < select
+      </button>
+      <button class="buttonAbstand" id="textareaErzeuger" (click)="erzeugeTextareaElementFuerForm()" mat-raised-button>
+        < textarea
+      </button>
+
+      <br>
+
+      <button class="buttonAbstand" id="outputErzeuger" (click)="erzeugeOutputElementFuerForm()" mat-raised-button>
+        < output
+      </button>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="form" maxlength="40" [(ngModel)]="fieldsetCast().form" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="name" maxlength="40" [(ngModel)]="fieldsetCast().name" type="text">
+      </mat-form-field>
+
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="fieldsetCast().disabled">
+        disabled
+      </mat-checkbox>
+    </div>
+
+
+    <!-- SELECT ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu" *ngIf="seitenNavService.menuePunkt == 'select'">
+
+      <mat-form-field>
+        <input matInput placeholder="Anzahl Option" (ngModelChange)="erzeugeOptionElementFuerForm()"
+               [(ngModel)]="selectCast().anzahlOptionen" type="number" maxlength="2">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Anzahl Gruppierungen" (ngModelChange)="erzeugeOptionElementFuerForm()"
+               [(ngModel)]="selectCast().anzahlOptGroups" type="number" maxlength="1">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Multiple" (ngModelChange)="erzeugeOptionElementFuerForm()"
+                    [(value)]="selectCast().multiple">
+          <mat-option value="An">An</mat-option>
+          <mat-option value="Aus">Aus</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="name" [(ngModel)]="selectCast().name" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="size" [(ngModel)]="selectCast().size" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="form" [(ngModel)]="selectCast().form" type="text">
+      </mat-form-field>
+
+      <br>
+
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="selectCast().required">
+        required
+      </mat-checkbox>
+
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="selectCast().autofocus">
+        autofocus
+      </mat-checkbox>
+
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="selectCast().disabled">
+        disabled
+      </mat-checkbox>
+
+    </div>
+
+    <!-- TEXTAREA ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'textarea'">
+
+      <mat-form-field>
+        <input matInput placeholder="rows" [(ngModel)]="textareaCast().rows" type="number" maxlength="2">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="cols" [(ngModel)]="textareaCast().cols" type="number" maxlength="2">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="dirname" [(ngModel)]="textareaCast().dirname" type="text" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="form" [(ngModel)]="textareaCast().form" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="maxlength" [(ngModel)]="textareaCast().maxlength" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="name" [(ngModel)]="textareaCast().name" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="placeholder" [(ngModel)]="textareaCast().placeholder" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="readonly" [(ngModel)]="textareaCast().readonly" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="wrap" [(value)]="textareaCast().wrap">
+          <mat-option value="hard">hard</mat-option>
+          <mat-option value="soft">soft</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br/>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="textareaCast().required">
+        required
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="textareaCast().autofocus">
+        autofocus
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="textareaCast().disabled">
+        disabled
+      </mat-checkbox>
+    </div>
+
+    <!-- INPUT ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'input'">
+
+      <button class="buttonAbstand" (click)="erzeugeDatalistFuerInput()" mat-raised-button>
+        < datalist
+      </button>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="pattern" [(ngModel)]="inputCast().pattern" type="text"
+               maxlength="100">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="type" [(ngModel)]="inputCast().type" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <mat-select placeholder="type" [(value)]="inputCast().type">
+          <mat-option value="button">button</mat-option>
+          <mat-option value="checkbox">checkbox</mat-option>
+          <mat-option value="color">color</mat-option>
+          <mat-option value="date">date</mat-option>
+          <mat-option value="datetime-local">datetime-local</mat-option>
+          <mat-option value="email">email</mat-option>
+          <mat-option value="file">file</mat-option>
+          <mat-option value="hidden">hidden</mat-option>
+          <mat-option value="image">image</mat-option>
+          <mat-option value="month">month</mat-option>
+          <mat-option value="number">number</mat-option>
+          <mat-option value="password">password</mat-option>
+          <mat-option value="radio">radio</mat-option>
+          <mat-option value="range">range</mat-option>
+          <mat-option value="reset">reset</mat-option>
+          <mat-option value="search">search</mat-option>
+          <mat-option value="submit">submit</mat-option>
+          <mat-option value="tel">tel</mat-option>
+          <mat-option value="text">text</mat-option>
+          <mat-option value="time">time</mat-option>
+          <mat-option value="url">url</mat-option>
+          <mat-option value="week">week</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="name" [(ngModel)]="inputCast().name" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="value" [(ngModel)]="inputCast().value" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="accept" [(ngModel)]="inputCast().accept" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="alt" [(ngModel)]="inputCast().alt" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="autocomplete" [(value)]="inputCast().autocomplete">
+          <mat-option value="on">on</mat-option>
+          <mat-option value="off">off</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="dirname" [(ngModel)]="inputCast().dirname" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="list" [(ngModel)]="inputCast().list" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="max" [(ngModel)]="inputCast().max" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="maxlength" [(ngModel)]="inputCast().maxlength" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="min" [(ngModel)]="inputCast().min" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="height" [(ngModel)]="inputCast().height" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="width" [(ngModel)]="inputCast().width" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="placeholder" [(ngModel)]="inputCast().placeholder" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="size" [(ngModel)]="inputCast().size" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matTooltip="nur für type='image'" matInput placeholder="src" [(ngModel)]="inputCast().src" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input  matInput placeholder="step" [(ngModel)]="inputCast().step" type="number">
+      </mat-form-field>
+
+      <br>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="inputCast().multiple">
+        multiple
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="inputCast().checked">
+        checked
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="inputCast().required">
+        required
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="inputCast().autofocus">
+        autofocus
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="inputCast().disabled">
+        disabled
+      </mat-checkbox>
+    </div>
+
+
+    <!-- BUTTON #############################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'button'">
+
+      <mat-form-field>
+        <mat-select placeholder="Type" [(value)]="buttonCast().type">
+          <mat-option value="button">button</mat-option>
+          <mat-option value="submit">submit</mat-option>
+          <mat-option value="reset">reset</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="value" [(ngModel)]="buttonCast().value" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="form" [(ngModel)]="buttonCast().form" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="name" [(ngModel)]="buttonCast().name" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+      <br>
+
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="buttonCast().disabled">
+        disabled
+      </mat-checkbox>
+      <mat-checkbox class="checkboxAbstand" [(ngModel)]="buttonCast().autofocus">
+        autofocus
+      </mat-checkbox>
+    </div>
+
+    <!-- OUTPUT #############################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'output'">
+
+
+      <mat-form-field>
+        <input matInput placeholder="for" [(ngModel)]="outputCast().for" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="form" [(ngModel)]="outputCast().form" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="name" [(ngModel)]="outputCast().name" type="text"
+               maxlength="10">
+      </mat-form-field>
+
+    </div>
+
+
+    <!-- A Element #############################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'a'">
+
+
+      <mat-checkbox matTooltip="Interner Link um zwischen den Seiten zu wechseln. Ziel kann aus der Seitenliste gewählt werden"
+                    class="checkboxAnpassen" [(ngModel)]="aCast().istEinInternerLink">
+        Interner Link
+      </mat-checkbox>
+      <mat-form-field>
+        <mat-select [disabled]="!aCast().istEinInternerLink" placeholder="Seitenliste" [(value)]="aCast().internerLinkAdresse">
+          <mat-option *ngFor="let seite of this.seitenNavService.seitenListe" [value]="seite">
+            <span class="seitenElement"> {{seite}} </span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br/>
+
+      <mat-form-field>
+        <input [disabled]="aCast().istEinInternerLink" matInput placeholder="href" [(ngModel)]="aCast().href"
+               type="text" maxlength="100" id="inputLink">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="target" [(ngModel)]="aCast().target"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+
+
+      <mat-form-field>
+        <input matInput placeholder="download" [(ngModel)]="aCast().download"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="hreflang" [(ngModel)]="aCast().hreflang"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="media" [(ngModel)]="aCast().media"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="ping" [(ngModel)]="aCast().ping"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="rel" [(value)]="aCast().rel">
+          <mat-option value="alternate">alternate</mat-option>
+          <mat-option value="author">author</mat-option>
+          <mat-option value="bookmark">bookmark</mat-option>
+          <mat-option value="external">external</mat-option>
+          <mat-option value="help">help</mat-option>
+          <mat-option value="license">license</mat-option>
+          <mat-option value="next">next</mat-option>
+          <mat-option value="nofollow">nofollow</mat-option>
+          <mat-option value="noreferrer">noreferrer</mat-option>
+          <mat-option value="noopener">noopener</mat-option>
+          <mat-option value="prev">prev</mat-option>
+          <mat-option value="search">search</mat-option>
+          <mat-option value="tag">tag</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="type" [(ngModel)]="aCast().type"
+               type="text" maxlength="20">
+      </mat-form-field>
+
+    </div>
+
+    <!-- LIST ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute"
+         *ngIf="seitenNavService.menuePunkt == 'ul' || seitenNavService.menuePunkt == 'ol'">
+
+
+      <button class="buttonAbstand" id="liErzeuger" (click)="erzeugeLiElement()" mat-raised-button>
+        < li
+      </button>
+
+      <mat-form-field *ngIf="seitenNavService.menuePunkt == 'ol'">
+        <mat-select placeholder="ol type" [(value)]="olCast().type">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="A">A</mat-option>
+          <mat-option value="a">a</mat-option>
+          <mat-option value="I">I</mat-option>
+          <mat-option value="i">i</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="seitenNavService.menuePunkt == 'ul'">
+        <mat-select placeholder="type" [(value)]="ulCast().type">
+          <mat-option value="none">none</mat-option>
+          <mat-option value="circle">circle</mat-option>
+          <mat-option value="disc">disc</mat-option>
+          <mat-option value="inherit">inherit</mat-option>
+          <mat-option value="square">square</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="seitenNavService.menuePunkt == 'ol'">
+        <input matTooltip="Gibt an ab wann die Liste geordnet sein soll"
+               matInput placeholder="start" [(ngModel)]="olCast().start"
+               type="number">
+      </mat-form-field>
+      <br>
+      <mat-checkbox *ngIf="seitenNavService.menuePunkt == 'ol'" [(ngModel)]="olCast().reversed">reversed</mat-checkbox>
+    </div>
+
+
+    <!-- NAV ELEMENT ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'nav'">
+      <button class="buttonAllein" id="liAErzeuger" (click)="erzeugeNavAElement()" mat-raised-button>
+        < li < a
+      </button>
+    </div>
+
+    <!-- DESCRIPTION LIST ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'dl'">
+      <button class="buttonAbstand" id="dtErzeuger" (click)="erzeugeDtElement()" mat-raised-button>
+        < dt
+      </button>
+      <button class="buttonAbstand" id="ddErzeuger" (click)="erzeugeDdElement()" mat-raised-button>
+        < dd
+      </button>
+    </div>
+
+    <!-- BLOCKQUOTE ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'blockquote'">
+    <mat-form-field>
+      <input matInput placeholder="cite" [(ngModel)]="blockquoteCast().cite" type="text">
+    </mat-form-field>
+    </div>
+
+    <!-- PROGRESS ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'progress'">
+      <mat-form-field>
+        <input matInput placeholder="Max" [(ngModel)]="progressCast().max" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Value" [(ngModel)]="progressCast().value" type="number">
+      </mat-form-field>
+    </div>
+
+    <!-- DETAILS ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'details'">
+      <button class="buttonAbstand" id="summaryErzeuger" (click)="erzeugeSummaryElement()" mat-raised-button>
+        < summary
+      </button>
+      <button class="buttonAbstand" id="detailsPErzeuger" (click)="erzeugeDetailsPElement()" mat-raised-button>
+        < p
+      </button>
+    </div>
+
+    <!-- METER ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'meter'">
+      <mat-form-field>
+        <input matInput placeholder="Min" [(ngModel)]="meterCast().min" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Max" [(ngModel)]="meterCast().max" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Value" [(ngModel)]="meterCast().value" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="High" [(ngModel)]="meterCast().high" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Low" [(ngModel)]="meterCast().low" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Optimum" [(ngModel)]="meterCast().optimum" type="text">
+      </mat-form-field>
+    </div>
+
+    <!-- Q ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'q'">
+      <mat-form-field>
+        <input matInput placeholder="Cite" [(ngModel)]="qCast().cite" type="text">
+      </mat-form-field>
+    </div>
+
+    <!-- AUDIO ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'audio'">
+      <mat-form-field>
+        <input matInput placeholder="src" [(ngModel)]="audioCast().src" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="preload" [(ngModel)]="audioCast().preload">
+          <mat-option value="auto">auto</mat-option>
+          <mat-option value="metadata">metadata</mat-option>
+          <mat-option value="none">none</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="audioCast().autoplay">autoplay</mat-checkbox>
+      <br/>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="audioCast().controls">controls</mat-checkbox>
+      <br/>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="audioCast().loop">loop</mat-checkbox>
+      <br/>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="audioCast().muted">muted</mat-checkbox>
+      <br/>
+    </div>
+
+    <!-- VIDEO ELEMENTE ######################################################################################################-->
+    <div class="customscrollbar detailmenu begrenzungAttribute" *ngIf="seitenNavService.menuePunkt == 'video'">
+      <mat-form-field>
+        <input matInput placeholder="src" [(ngModel)]="videoCast().src" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="poster" [(ngModel)]="videoCast().poster" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="preload" [(ngModel)]="videoCast().preload">
+          <mat-option value="auto">auto</mat-option>
+          <mat-option value="metadata">metadata</mat-option>
+          <mat-option value="none">none</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="videoCast().autoplay">autoplay</mat-checkbox>
+      <br/>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="videoCast().controls">controls</mat-checkbox>
+      <br/>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="videoCast().loop">loop</mat-checkbox>
+      <br/>
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="videoCast().muted">muted</mat-checkbox>
+      <br/>
+    </div>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="detailmenuwrapper, anpassenAnToolbox">
+    <mat-expansion-panel-header class="menueAbstand">
+      <mat-panel-title class="groesseMenue">
+        Globale Attribute
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div style="height:200px; overflow-y: scroll" class="customscrollbar">
+      <mat-form-field>
+        <input matTooltip="Wird von Clariframer genutzt, darf nicht verändert werden"
+               matInput placeholder="id" [(ngModel)]="ausgewaehltesObjekt.id"
+               type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="class" [(ngModel)]="ausgewaehltesObjekt.class" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="dir" [(ngModel)]="ausgewaehltesObjekt.dir">
+          <mat-option value="auto">auto</mat-option>
+          <mat-option value="ltr">ltr</mat-option>
+          <mat-option value="rtl">rtl</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="draggable" [(ngModel)]="ausgewaehltesObjekt.draggable">
+          <mat-option value="auto">auto</mat-option>
+          <mat-option value="ltr">true</mat-option>
+          <mat-option value="rtl">false</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="dropzone" [(ngModel)]="ausgewaehltesObjekt.dropzone">
+          <mat-option value="copy">copy</mat-option>
+          <mat-option value="move">move</mat-option>
+          <mat-option value="link">link</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matTooltip="z.B. de für Deutschland" matInput placeholder="lang" [(ngModel)]="ausgewaehltesObjekt.lang"
+               type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matTooltip="Muss eine Nummer sein." matInput placeholder="tabindex" [(ngModel)]="ausgewaehltesObjekt.tabindex" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="title" [(ngModel)]="ausgewaehltesObjekt.title" type="text">
+      </mat-form-field>
+      <br/>
+
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="ausgewaehltesObjekt.contenteditable">contenteditable</mat-checkbox>
+      <br/>
+
+      <mat-checkbox class="checkboxAnpassen" matTooltip="contenteditable muss dafür aktiviert werden" [(ngModel)]="ausgewaehltesObjekt.spellcheck">spellcheck</mat-checkbox>
+      <br/>
+
+      <mat-checkbox class="checkboxAnpassen" [(ngModel)]="ausgewaehltesObjekt.hidden">hidden</mat-checkbox>
+    </div>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+

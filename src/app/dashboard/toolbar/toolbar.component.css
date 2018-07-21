@@ -1,0 +1,622 @@
+/* @author Yavuz Bulunmaz / Struktur durch Kommentare*/
+/* Push von Yavuz Bulunmaz am 18.05.2018 wurde durch manuellen Pull aus Log entfernt */
+
+@media print {
+  #no-print {
+    display: none;
+  }
+
+  .nichtdrucken {
+    display: none;
+  }
+
+  ::ng-deep .mat-menu-panel {
+    display: none;
+  }
+}
+
+/*------------------------ Default Auflösung / optimiert für 4K (ab 2400px) -----------------------------------------*/
+
+/*---------- Import Dialoge /4K----------*/
+/deep/ .mat-dialog-container {
+  font-family: "Lato", sans-serif;
+  padding: 15px 0 18px 5px !important;
+  overflow: hidden !important;
+}
+
+/deep/ .mat-dialog-container button {
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+/deep/ .mat-dialog-container input {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/deep/ .mat-menu-item {
+  font-size: 30px;
+  height: 60px !important;
+}
+
+/deep/ .mat-option-text {
+  font-size: 30px;
+}
+
+/*---------- Toolbox -> Auwahl-Menü /4K----------*/
+.toolbox {
+  background-color: #0E4A7E;
+  color: #F7FFFF;
+  position: relative;
+  width: 700px;
+  border-radius: 10px;
+  float: right;
+  top: 4rem;
+  right: 4rem;
+  margin: 4rem;
+  box-shadow: 0em 6px 20px #363636;
+  padding-bottom: 15px;
+  display: block;
+  z-index: 5000;
+}
+
+.menueIcon {
+  font-size: 35px;
+  font-family: "Lato", sans-serif;
+
+}
+
+#zusatzFunktionen {
+  float: left;
+  margin-top: 20px;
+  margin-left: 30px;
+    width: 15%;
+}
+
+#toolboxText {
+  font-size: 60px;
+  font-family: "Lato", sans-serif;
+  font-stretch: extra-expanded;
+  float: right;
+    margin: 34px 0 10px 0;
+    user-select: none;
+    padding-left: 12.5%;
+    width: 70%;
+    display: flex;
+    align-items: flex-end;
+}
+
+
+
+.menue {
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  color: #F7FFFF;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+#ersteReihe {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.btn-clear {
+  color: white;
+  text-decoration: none;
+}
+
+#domBausteinAuswahl {
+  width: 100%;
+}
+
+/*---------- Toolbar mit Button /4K----------*/
+.toolbar {
+  background-color: #363636;
+  border-radius: 8px;
+  width: 650px;
+  margin-top: 10px;
+  margin-left: -5px;
+}
+
+/deep/ .mat-select-value {
+  font-size: 30px;
+}
+
+/deep/ .mat-form-field-infix {
+  height: 30px;
+}
+.mat-expansion-panel {
+  background-color: #353735;
+}
+
+.buttonReihe {
+  color: #363636;
+  margin-top: 130px;
+  margin-bottom: 30px;
+  margin-left: 6px;
+  box-sizing: unset;
+  padding-left: 4px;
+}
+
+.buttonReihe:last-child {
+  margin-bottom: 80px;
+}
+
+.button {
+  font-size: 32px;
+  color: #363636;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background-color: #F7FFFF;
+  line-height: 210px;
+  width: 210px;
+  height: 210px;
+  border-radius: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+    user-select: none;
+}
+
+.buttonReihe:first-child {
+  margin-top: 55px;
+}
+
+.button:hover {
+  background-color: #00C4FF;
+}
+
+.selected {
+  background-color: #00C4FF !important;
+}
+
+.disabled {
+  background-color: #a8a8a8;
+  color: #686868;
+}
+
+.disabled:hover {
+  background-color: #a8a8a8;
+  color: #686868;
+  cursor: default;
+}
+
+/*---------- Zusatz für alle ----------*/
+.minifyToolbar {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-top: 10px solid;
+  border-color: #0e3d6f;
+  border-radius: 10px 10px 0px 0px;
+  margin: 0px auto;
+  padding: 0px auto;
+  box-shadow: 0px 1px 8px #0d2142;
+}
+
+@media screen and (min-width: 2401px) {
+    .mat-expansion-panel-header {
+        padding: 1vw !important;
+
+    }
+
+    mat-panel-title {
+        font-size: 3rem !important;
+
+    }
+
+    .menueIcon mat-icon {
+        font-size: 4rem !important;
+    }
+
+    #toolboxText {
+        font-size: 6rem;
+        padding-left: 7% !important;
+    }
+}
+/*------------------------------------- für auflösungen bis 2400px --------------------------------------------------*/
+@media screen and (max-width: 2400px) {
+
+  /*---------- Import Dialoge ----------*/
+  /deep/ .mat-dialog-container {
+    padding: 8px 0 12px 15px !important;
+  }
+
+  /deep/ .mat-dialog-container button {
+    margin-top: 15px;
+    font-size: 15px;
+  }
+
+  /deep/ .mat-dialog-container input {
+    font-size: 15px;
+  }
+
+  /deep/ .mat-menu-item {
+    font-size: 15px !important;
+    height: auto !important;
+  }
+
+  /deep/ .mat-option-text {
+    font-size: 15px;
+  }
+
+  /*---------- Toolbox -> Auwahl-Menü /2400px----------*/
+  .toolbox {
+    width: 300px;
+    right: 0.2rem;
+    top: 1rem;
+    margin: 1rem;
+    padding-bottom: 10px;
+  }
+
+  /deep/ .mat-select-value {
+    font-size: 14px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    height: 14px;
+  }
+
+
+  .menueIcon {
+    font-size: 14px;
+  }
+
+  .menue {
+    font-size: 15px;
+  }
+
+  #zusatzFunktionen {
+    font-size: 12px;
+    margin-top: 6px;
+    margin-left: 15px;
+  }
+
+  #toolboxText {
+    font-size: 34px;
+    margin: 15px 94px 5px 0;
+  }
+
+  /*---------- Toolbar mit Button /2400px----------*/
+  .toolbar {
+    width: 280px;
+    margin-top: -11px;
+    margin-left: -13px;
+  }
+
+  .buttonReihe:first-child {
+    margin-top: 23px;
+  }
+
+  .buttonReihe {
+    width: 280px;
+    margin: 18px 0 8px 0;
+    padding-left: 8px;
+  }
+
+  .buttonReihe:last-child {
+    margin-bottom: 14px;
+  }
+
+  .button {
+    font-size: 15px;
+    line-height: 84px;
+    width: 84px;
+    height: 84px;
+    margin-right: 6px;
+  }
+
+  .wortZuLang {
+    font-size: 12px;
+  }
+
+    #offCanvasMenuButton {
+        position: fixed;
+        right: 1.2vw;
+        bottom: 1.2vw;
+        background-color: #a3a3a4;
+        color: #686868;
+        opacity: 0.5;
+        transition: 0.3s;
+        transform: scale(1) !important;
+    }
+
+    #offCanvasMenuButton:hover {
+        transition: 0.3s;
+        opacity: 1;
+        transform: scale(1.1) !important;
+    }
+
+}
+
+/*------------------------------------- für auflösungen bis 1600px --------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+  /*---------- Import Dialoge ----------*/
+  /deep/ .mat-dialog-container {
+    padding: 8px 0 12px 24px !important;
+  }
+
+  /deep/ .mat-dialog-container button {
+    margin-top: 15px;
+    font-size: 10px;
+  }
+
+  /deep/ .mat-dialog-container input {
+    font-size: 10px;
+  }
+
+  /deep/ .mat-menu-item {
+    font-size: 12px !important;
+  }
+
+  /deep/ .mat-option-text {
+    font-size: 12px;
+  }
+
+  /*---------- Toolbox -> Auwahl-Menü /1600px----------*/
+  .toolbox {
+    width: 250px;
+    padding-bottom: 8px;
+  }
+
+  /deep/ .mat-select-value {
+    font-size: 10px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    height: 10px;
+  }
+
+  .expansionPanel {
+    margin-bottom: 5px;
+  }
+
+  .menueIcon {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  .menue {
+    font-size: 12px;
+  }
+
+  .mat-expansion-panel-header {
+    height: 42px !important;
+  }
+
+  #zusatzFunktionen {
+    font-size: 5px;
+  }
+
+  #toolboxText {
+    font-size: 30px;
+  }
+
+  /*---------- Toolbar mit Button /1600px----------*/
+  .toolbar {
+    width: 230px;
+  }
+
+  /deep/ .mat-select-value {
+    font-size: 12px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    height: 12px;
+  }
+
+  /deep/ .mat-expansion-panel-body {
+    padding-left: 28px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .buttonReihe {
+    width: 230px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+
+  .buttonReihe:first-child {
+    margin-top: 8px;
+  }
+
+  .buttonReihe:last-child {
+    margin-bottom: 5px;
+  }
+
+  .button {
+    font-size: 13px;
+    line-height: 65px;
+    width: 65px;
+    height: 65px;
+  }
+
+  .wortZuLang {
+    font-size: 10px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 1200px --------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+  /*---------- Import Dialoge ----------*/
+  /deep/ .mat-dialog-container {
+    padding-left: 15px !important;
+  }
+
+  /deep/ .mat-dialog-container button {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+  /deep/ .mat-dialog-container input {
+    font-size: 10px;
+  }
+
+  /deep/ .mat-option-text {
+    font-size: 11px !important;
+  }
+
+  /*---------- Toolbox -> Auwahl-Menü /1200px----------*/
+  .toolbox {
+    width: 210px;
+    padding-bottom: 2px;
+  }
+
+
+
+  #toolboxText {
+    font-size: 25px;
+  }
+
+  /*---------- Toolbar mit Button /1200px----------*/
+  .toolbar {
+    width: 190px;
+  }
+
+  /deep/ .mat-select-value {
+    font-size: 10px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    height: 10px;
+  }
+
+  /deep/ .mat-expansion-panel-body {
+    padding-left: 18px !important;
+    padding-bottom: 3px !important;
+  }
+
+  .buttonReihe {
+    width: 190px;
+    margin-bottom: 0;
+    height: 61px;
+  }
+
+  .buttonReihe:first-child {
+    margin-top: 2px;
+  }
+
+  .buttonReihe:last-child {
+    margin-bottom: 3px;
+  }
+
+  .button {
+    font-size: 10px;
+    line-height: 57px;
+    width: 57px;
+    height: 57px;
+  }
+
+  .wortZuLang {
+    font-size: 9px;
+  }
+}
+
+/*------------------------------------- für auflösungen bis 900px --------------------------------------------------*/
+@media screen and (max-width: 900px) {
+
+  /*---------- Import Dialoge ----------*/
+  /* Hat die >1200px Einstellungen übernommen*/
+
+  /*---------- Toolbox -> Auwahl-Menü /900px----------*/
+  .toolbox {
+    width: 180px;
+  }
+
+  #toolboxText {
+    font-size: 20px;
+  }
+
+  .menueIcon {
+    font-size: 10px;
+  }
+
+  .menue {
+    font-size: 10px;
+
+  }
+
+  /*---------- Toolbar mit Button /900px----------*/
+  .toolbar {
+    width: 170px;
+  }
+
+  /deep/ .mat-select-value {
+    font-size: 10px;
+  }
+
+  /deep/ .mat-form-field-infix {
+    height: 10px;
+  }
+
+  /deep/ .mat-expansion-panel-body {
+    padding-left: 14px !important;
+  }
+
+  .buttonReihe {
+    width: 170px;
+    height: 54px;
+  }
+
+  .buttonReihe:first-child {
+    margin-top: 1px;
+  }
+
+  .buttonReihe:last-child {
+    margin-bottom: 2px;
+  }
+
+  .button {
+    font-size: 9px;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .wortZuLang {
+    font-size: 8px;
+  }
+
+  #offCanvasMenuButton {
+    transform: scale(1) !important;
+    bottom: 2vw;
+    right: 2vw;
+  }
+
+  #offCanvasMenuButton:hover {
+    transform: scale(1.2);
+  }
+
+}
+
+#offCanvasMenuButton {
+  position: fixed;
+  right: 1.2vw;
+  bottom: 1.2vw;
+  background-color: #a3a3a4;
+  color: #686868;
+  opacity: 0.5;
+  transition: 0.3s;
+  transform: scale(1.5);
+}
+
+#offCanvasMenuButton:hover {
+  transition: 0.3s;
+  opacity: 1;
+  transform: scale(1.7);
+}
+
+.offCanvasMenuButtonToggle {
+  color: #00C4FF !important;
+  background-color: #363636 !important;
+}
+
+.toolbarVerbergen {
+  display: none;
+}
